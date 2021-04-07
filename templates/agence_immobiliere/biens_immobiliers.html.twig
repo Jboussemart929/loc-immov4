@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Immobilier.com | Nos biens immobiliers
+{% endblock %}
+
+{% block body %}
+	{% if app.user %}
+		<h1 class="text-center">Vos annonces en ligne et les dernièrs ajouts de nos membres
+		</h1>
+		<hr>
+	{% else %}
+		<h1 class="text-center">Nos locations en ligne
+		</h1>
+		<hr>
+	{% endif %}
+
+	{# Filtres #}
+	<form method="GET" action="{{path('filtreImmoByMax')}}">
+		<div>
+			<input type="range" id="prix max" name="valMax" min="0" max="200000" step="2000" value="1000" oninput="this.form.valMaxInput.value = this.value">
+			<input type="number" name="valMaxInput" min="0" max="200000" value="1000" oninput="this.form.valMax.value = this.value"/>
+			<label for="prix max">Prix maximum</label>
+			<button type="submit" class="btn btn-primary">Filtrer</button>
+
+		</div>
+	</form>
+	<a href="{{ path("filtreImmoByMax", {'valMax':20000}) }}">filtrer par prix inférieur à 20 000€</a>
+	<hr>
+
+	{# Debut du carourelle des biens en locations #}
+	<div class="carousel" height="100%" data-flickity='{ "freeScroll": true, "contain": true , "groupCells": true, "adaptiveHeight": true, "imagesLoaded": true}'>
+		{% for bien_immo in biens_immo %}
+			<div class="carousel-cell">
+				<div class="card" style="width: 18rem;">
+					<img src="{{ asset('images/biens/' ~ bien_immo.images) }}" width="200" alt="" class="card-img-top">
+					<div class="card-body">
+						<h5 class="card-title">Type de location:
+							{{ bien_immo.type }}</h5>
+						<p>Surface:
+							{{ bien_immo.surface }}
+							m²</p>
+						<p>Prix:
+							{{ bien_immo.prix }}
+							€</p>
+						<p>localisation:
+							{{ bien_immo.localisation }}</p>
+						<p>Date de mise en ligne:
+							{{ bien_immo.dateDeCreation | date("d/m/Y à H:i") }}</p>
+						<hr>
+						<a href="{{ path('biens_immobiliers_lire', {id:bien_immo.id}) }}" class="btn btn-success">Lire plus</a>
+						{% if app.user and (app.user is same as bien_immo.reservateur) %}
+							<a href="#" class="btn btn-muted">Réservé par vous</a>
+						{% elseif app.user and bien_immo.reservateur %}
+
+							<a href="#" class="btn btn-muted">Réservé</a>
+
+						{% else %}
+							<a href="#" class="btn btn-success">Disponible</a>
+
+						{% endif %}
+
+						<div class="btnFlex">
+							{% if app.user and (app.user is same as(bien_immo.author)) %}
+								<form method="POST" action="{{path('biens_immobiliers_suppression',{'id' : bien_immo.id})}}">
+									<input type="hidden" name="_method" value="delete">
+									<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ bien_immo.id)}}">
+									<input type="submit" value="supprimer" class="btn btn-danger">
+								</form>
+								<a href="{{ path('biens_immobiliers_modification', {id:bien_immo.id}) }}" class="btn btn-success">Modification</a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	{% if app.user %}
+		<h2 class="text-center">Ajouter un nouveau bien</h2>
+
+		{{ form_start(form_biens) }}
+		{{ form_row(form_biens.type,  {"label": "Entrez un type d'habitation:"}) }}
+		{{ form_row(form_biens.surface,  {"label": "Entrez une surface (en m²):"}) }}
+		{{ form_row(form_biens.prix,  {"label": "Entrez le prix du bien (en €):"}) }}
+		{{ form_row(form_biens.localisation,  {"label": "Entrez une localisation:"}) }}
+		{{ form_row(form_biens.images,  {"label": "Insérez une image:"}) }}
+		<button type="submit" class="btn btn-success">Ajouter</button>
+		{{ form_end(form_biens) }}
+		<br>
+
+	{% endif %}
+</div>{% endblock %}

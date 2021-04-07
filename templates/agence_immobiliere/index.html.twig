@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Immobilier.com | Accueil{% endblock %}
+
+{% block body %}
+{% if app.user %}
+        <div class="div_middle">
+        <div class="text_middle">
+          <h6 class="text-primary">  Bienvenue sur Loc-immo {{ app.user.username }}, vous avez désormais accès aux annonces postées par la communauté et la possibilité de mettre en location vos biens de particulier à particulier.
+            </h6>       
+        </div>
+        {% else %}
+<div class="div_middle">
+    <div class="text_middle">
+        <h6 >Bienvenue chez Loc-Immo, votre plateforme de location en ligne et gratuite <br> de particulier à particulier !</h1>
+    </div>
+</div>
+        {% endif %}
+<img src="{{ asset('images/agence-immobilière.jpg') }}" width="100%" alt="Symfony!"/>
+{% endblock %}

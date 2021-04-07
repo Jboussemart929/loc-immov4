@@ -1,0 +1,206 @@
+body{
+  scroll-behavior: smooth;
+  font-family: "Allura";
+}
+
+.div_middle{
+   position:relative;
+   text-align:center;
+}
+
+.text_middle{
+   position:absolute;
+   margin-top: 250px;
+   margin-left:50%;
+   transform: translateX(-50%);
+  }
+
+
+
+   
+
+/*  css: flickity.css */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+
+.carousel {
+  background: #EEE;
+  margin-bottom: 30px;
+ 
+}
+
+.carousel-cell {
+  
+  width: 28%;
+  margin-right: 10px;
+ 
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+
+/* .carousel-cell.is-selected {
+  
+} */
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+ 
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+.card{
+  
+   box-shadow: 12px 12px 2px 1px rgba(	0	, 123,	255);
+
+}
+/*effet au passage de la souris sur les cards de location */
+.card:hover{    
+  transform: scale(1.1);
+  transition: all 2s ease-in-out;
+  z-index: 3;
+  
+}
+
+/* scool top */
+
+#scroll_to_top {
+  position: fixed;
+  width: 25px;
+  height: 25px;
+  bottom: 50px;
+  right: 30px;
+}
+#scroll_to_top img {
+  width: 25px;
+  
+}
+.fa-arrow-circle-up:before {
+  content: "\f0aa";
+  font-size: 30px;
+}
+    
+  body, html{
+
+    height:100%;}
+  
+  body{
+  
+  text-align:center;
+  
+  } 
+  
+  #main{
+  
+  max-width:1280px;
+  
+  min-height:100%;
+  
+  margin:0 auto;
+  
+  position:relative;
+  
+  }
+
+  h1{
+    margin:revert;
+    font-family: "Roboto";
+  font-size: 40px;
+  }
+  h2{
+    font-family: "Roboto";
+  font-size: 40px;
+  }
+  h6{
+    position: relative;
+    margin:revert;
+    font-family: "Roboto";
+  font-size: 60px;
+  color: rgba(	0	, 123,	255);
+  
+  
+  }
+
+   h6{
+    min-width: 600px ;
+    
+      
+        font-size: 2rem;
+      
+  }
+  .icon{
+    
+    font-size:30px;
+    display: flex;
+    justify-content: space-evenly;
+
+  }
+
+
+  p{
+    font-family: "Roboto";
+}
+.navbar{
+  font-family: "Roboto";
+  font-size: 20px;
+}
+.navbar-brand {
+  font-size: 2.25rem;
+  color:rgba(	0	, 123,	255);
+ 
+}
+a.nav-link {
+
+    
+    border-color: #f8f9fa;
+  
+}
+.btn-outline-light {
+font-size: 20px;
+}
+
+p.Remarque{
+  font-family: "Roboto";
+  font-size: 40px;
+}
+
+/* ///Footer */
+
+.footer{
+  
+    position:absolute;
+    bottom:0;  /* on le colle en bas */
+    width:100%;
+    height:100px;   /* Hauteur du pied de page */
+ 
+    
+ 
+}
+
+section{
+  height:100%;
+}
+.container{
+  height:100%
+}
+.card-img, .card-img-bottom, .card-img-top {
+  height: 184px;
+}
+.card-title{
+  height: 65px;
+}
+.btnFlex{
+  display:flex;
+  justify-content:space-between;
+  margin-top:1px;
+}
+
+filtre{
+  border-radius:30px
+}

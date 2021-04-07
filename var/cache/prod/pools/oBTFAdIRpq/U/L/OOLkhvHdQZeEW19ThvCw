@@ -1,0 +1,212 @@
+<?php //%255BApp%255CEntity%255CBiensImmobilier%2524CLASSMETADATA%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ClassMetadata')),
+        clone ($p['Doctrine\\ORM\\Id\\IdentityGenerator'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Id\\IdentityGenerator')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\BiensImmobilier',
+            ],
+            'namespace' => [
+                'App\\Entity',
+            ],
+            'rootEntityName' => [
+                'App\\Entity\\BiensImmobilier',
+            ],
+            'customRepositoryClassName' => [
+                'App\\Repository\\BiensImmobilierRepository',
+            ],
+            'identifier' => [
+                [
+                    'id',
+                ],
+            ],
+            'generatorType' => [
+                4,
+            ],
+            'fieldMappings' => [
+                [
+                    'id' => [
+                        'fieldName' => 'id',
+                        'type' => 'integer',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'id' => true,
+                        'columnName' => 'id',
+                    ],
+                    'type' => [
+                        'fieldName' => 'type',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 11,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'type',
+                    ],
+                    'surface' => [
+                        'fieldName' => 'surface',
+                        'type' => 'float',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'surface',
+                    ],
+                    'prix' => [
+                        'fieldName' => 'prix',
+                        'type' => 'float',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'prix',
+                    ],
+                    'localisation' => [
+                        'fieldName' => 'localisation',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 255,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'localisation',
+                    ],
+                    'dateDeCreation' => [
+                        'fieldName' => 'dateDeCreation',
+                        'type' => 'datetime',
+                        'scale' => 0,
+                        'length' => null,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'date_de_creation',
+                    ],
+                    'images' => [
+                        'fieldName' => 'images',
+                        'type' => 'string',
+                        'scale' => 0,
+                        'length' => 255,
+                        'unique' => false,
+                        'nullable' => false,
+                        'precision' => 0,
+                        'columnName' => 'images',
+                    ],
+                ],
+            ],
+            'fieldNames' => [
+                [
+                    'id' => 'id',
+                    'type' => 'type',
+                    'surface' => 'surface',
+                    'prix' => 'prix',
+                    'localisation' => 'localisation',
+                    'date_de_creation' => 'dateDeCreation',
+                    'images' => 'images',
+                ],
+            ],
+            'columnNames' => [
+                [
+                    'id' => 'id',
+                    'type' => 'type',
+                    'surface' => 'surface',
+                    'prix' => 'prix',
+                    'localisation' => 'localisation',
+                    'dateDeCreation' => 'date_de_creation',
+                    'images' => 'images',
+                ],
+            ],
+            'table' => [
+                [
+                    'name' => 'biens_immobilier',
+                ],
+            ],
+            'associationMappings' => [
+                [
+                    'author' => [
+                        'fieldName' => 'author',
+                        'joinColumns' => [
+                            [
+                                'name' => 'author_id',
+                                'unique' => false,
+                                'nullable' => false,
+                                'onDelete' => null,
+                                'columnDefinition' => null,
+                                'referencedColumnName' => 'id',
+                            ],
+                        ],
+                        'cascade' => [],
+                        'inversedBy' => 'biensImmobiliers',
+                        'targetEntity' => 'App\\Entity\\Membres',
+                        'fetch' => 2,
+                        'type' => 2,
+                        'mappedBy' => null,
+                        'isOwningSide' => true,
+                        'sourceEntity' => 'App\\Entity\\BiensImmobilier',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                        'sourceToTargetKeyColumns' => [
+                            'author_id' => 'id',
+                        ],
+                        'joinColumnFieldNames' => [
+                            'author_id' => 'author_id',
+                        ],
+                        'targetToSourceKeyColumns' => [
+                            'id' => 'author_id',
+                        ],
+                        'orphanRemoval' => false,
+                    ],
+                    'reservateur' => [
+                        'fieldName' => 'reservateur',
+                        'joinColumns' => [
+                            [
+                                'name' => 'reservateur_id',
+                                'referencedColumnName' => 'id',
+                            ],
+                        ],
+                        'cascade' => [],
+                        'inversedBy' => 'reservations',
+                        'targetEntity' => 'App\\Entity\\Membres',
+                        'fetch' => 2,
+                        'type' => 2,
+                        'mappedBy' => null,
+                        'isOwningSide' => true,
+                        'sourceEntity' => 'App\\Entity\\BiensImmobilier',
+                        'isCascadeRemove' => false,
+                        'isCascadePersist' => false,
+                        'isCascadeRefresh' => false,
+                        'isCascadeMerge' => false,
+                        'isCascadeDetach' => false,
+                        'sourceToTargetKeyColumns' => [
+                            'reservateur_id' => 'id',
+                        ],
+                        'joinColumnFieldNames' => [
+                            'reservateur_id' => 'reservateur_id',
+                        ],
+                        'targetToSourceKeyColumns' => [
+                            'id' => 'reservateur_id',
+                        ],
+                        'orphanRemoval' => false,
+                    ],
+                ],
+            ],
+            'idGenerator' => [
+                $o[1],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

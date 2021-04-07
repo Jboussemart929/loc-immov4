@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        {# Bootstrap / flickity #}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous"></script>
+
+        {# <script src="/path/to/flickity.pkgd.min.js"></script> #}
+
+        {# Fin du Bootstrap / flickity #}
+  <link href='to-top.css' rel='stylesheet' type='text/css'> {#bouton scroll #}
+
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  {# <link rel="stylesheet" href="/path/to/flickity.css" media="screen"> #}
+
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+    <link  media="screen and (max-width: 640px)" href="{{ asset('css/queries.css') }}" rel="stylesheet"/>
+
+        <title>{% block title %}Loc-Immo.com{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{ path("home") }}"><img src="{{ asset('images/logo2.jpg') }}" width="50px" height=" 50px" alt="Logo" />Loc-Immo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav mr-auto"></div>
+      <div class="div-inline mt-2 mt-md-0">
+      <ul class="navbar-nav">
+        {% if app.user %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ path("biens_immobiliers") }}">Vos annonces en ligne | Les derniers biens ajoutés | Ajouté un bien a la location</a>
+        {% else %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ path("biens_immobiliers") }}">Nos Annonces</a>
+        {% endif  %}
+      
+      
+      <li class="nav-item active">
+          <a class="nav-link" href="{{ path("contact") }}">Nous contacter</a>
+    </li>
+      
+      
+        {% if app.user %}
+        <li class="nav-item active">
+        <a class="btn btn-outline-light text-light" href="{{ path("app_logout") }}">Se déconnecter </a>
+        </li>
+        {% else %}
+        <li class="nav-item active">
+        <a class="btn btn-outline-light text-light" href="{{ path("authentification") }}">S'identifier/ S'inscrire </a>
+        </li>
+        {% endif  %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+</header>
+
+        {% block body %}{% endblock %}
+        {% block javascripts %} {% endblock %}
+ 
+    <!-- /////FOOTERT + COPYRIGHT -->
+    {% block footer %}
+    <footer class="bottom" id="footer">
+        
+    <div id="scroll_to_top">
+            <a href="#top"><i class="fas fa-arrow-circle-up"></i></a>
+        </div>  
+        <div class="icon">
+                                <a href="#"><i class="fab fa-facebook-square"></i></a>
+                                 <a href="#"><i class="fab fa-twitter-square"></i></a>
+                                  <a href="#"><i class="fab fa-instagram"></i></a>
+                           
+            <a href="#" class="text-primary"><i class="far fa-copyright"></i>     Copyright Boussemart Julien 2021</a>
+         </div>    
+    </footer>
+    {% endblock %}
+</html>

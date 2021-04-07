@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Immobilier.com | Nos biens immobiliers{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+<p>Type d'habitation: {{ bien.type }}</p>
+<p>Surface: {{ bien.surface }} m²</p>
+<p>Prix: {{ bien.prix }} €</p>
+<p>localisation: {{ bien.localisation }}</p>
+<img src="{{ asset('images/biens/' ~ bien.images) }}" width="800" alt="">
+<p>Date de mise en ligne: {{ bien.dateDeCreation | date("d/m/Y à H:i") }}</p>
+
+<hr>
+
+{% if app.user and bien.reservateur %}
+    <a href="#" class="btn btn-muted">Réservé</a>
+{% elseif bien.reservateur is same as app.user %}
+    <a href="#" class="btn btn-success">Disponible</a>
+{% else %}
+    <form method="POST" action="{{ path('app_reservation' , {'id' : bien.id} ) }}">
+        <input type="hidden" name="_token" value="{{csrf_token('RESA' ~ bien.id)}}">
+        <input type="submit" value="Réserver" class="btn btn-success">
+    </form>
+
+{% endif %}
+
+
+
+</div>
+{% endblock %}
